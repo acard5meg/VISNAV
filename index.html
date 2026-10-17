@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hydra: A Navigation World Action Model</title>
+    <title>VISNAV: Heterogeneous Robot Dataset for VISual NAVigation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- MathJax for rendering LaTeX -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -18,20 +18,20 @@
 
     <!-- Header Section -->
     <header class="max-w-4xl mx-auto px-6 pt-16 pb-10 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 tracking-tight"><span style="color: #1A4B84;">HYDRA</span>: A Navigation World Action Model</h1>
-        <h2 class="text-2xl text-gray-600 mb-8">Discrete Latent Planning & Continuous Flow Matching Execution</h2>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 tracking-tight">VISNAV</h1>
+        <h2 class="text-2xl text-gray-600 mb-8">Heterogeneous Robot Dataset for VISual NAVigation</h2>
 
         <div class="text-xl mb-2">
-            <a href="https://mhnazeri.github.io" class="text-blue-600 hover:text-blue-800 hover:underline">Mohammad Nazeri</a><sup>1</sup>,
             Alex Card<sup>1</sup>,
             <a href="https://www.vcai-lab.org/team-huber" class="text-blue-600 hover:text-blue-800 hover:underline">Samira Huber</a><sup>2</sup>,
-            <a href="https://anujpokhrel.github.io/" class="text-blue-600 hover:text-blue-800 hover:underline">Anuj Pokhrel</a><sup>1</sup>,
-            <a href="https://www.vcai-lab.org/team-wang" class="text-blue-600 hover:text-blue-800 hover:underline">Yujun Wang</a><sup>4</sup>,
             <a href="https://www.vcai-lab.org/team-hammele" class="text-blue-600 hover:text-blue-800 hover:underline">Ruben Hammele</a><sup>2</sup>,
+            <a href="https://mhnazeri.github.io" class="text-blue-600 hover:text-blue-800 hover:underline">Mohammad Nazeri</a><sup>1</sup>,
+            Nhat Lee<sup>1</sup>,
             <a href="https://daeunsong.github.io/" class="text-blue-600 hover:text-blue-800 hover:underline">Daeun Song</a><sup>3</sup>,
             <a href="https://www.vcai-lab.org/team-pirk" class="text-blue-600 hover:text-blue-800 hover:underline">Sören Pirk</a><sup>2</sup>,
             <a href="https://people.cs.gmu.edu/~xiao/" class="text-blue-600 hover:text-blue-800 hover:underline">Xuesu Xiao</a><sup>1</sup>
         </div>
+
         <div class="text-lg text-gray-600 mb-2">
             <sup>1</sup><a href="https://robotixx.cs.gmu.edu/" target="_blank" rel="noopener noreferrer" class="hover:underline">RobotiXX Lab, George Mason University</a>
         </div>
@@ -41,25 +41,19 @@
         <div class="text-lg text-gray-600 mb-2">
             <sup>3</sup><a href="https://robotics.ewha.ac.kr/" target="_blank" rel="noopener noreferrer" class="hover:underline">AIR Lab,  Ewha Womans University</a>
         </div>
-        <div class="text-lg text-gray-600 mb-6">
-            <sup>4</sup>Ludwig Maximilian University Munich
-        </div>
 
         <!-- Quick Links -->
         <div class="flex flex-wrap justify-center gap-4">
-              <a href="https://arxiv.org/pdf/2608.28995"><img src="https://img.shields.io/badge/arXiv-2608.2899-b31b1b.svg?logo=arxiv" alt="Hydra paper on arXiv"></a>
-
-              <a href="https://github.com/mhnazeri/Hydra"><img src="https://img.shields.io/badge/GitHub-Code-gray.svg?logo=github" alt="Github Repository"></a>
-
-              <a href="https://huggingface.co/mhnazeri/Hydra"><img src="https://img.shields.io/badge/Hugging%20Face-Weights-yellow.svg?logo=huggingface" alt="Pretrained weights on Hugging Face"></a>
-
+            <a href="#" class="inline-flex items-center px-4 py-2 rounded-full border border-gray-300 bg-gray-100 text-gray-700 text-sm font-medium opacity-70 cursor-not-allowed">Coming soon · arXiv</a>
+            <a href="#" class="inline-flex items-center px-4 py-2 rounded-full border border-gray-300 bg-gray-100 text-gray-700 text-sm font-medium opacity-70 cursor-not-allowed">Coming soon · GitHub</a>
+            <a href="#" class="inline-flex items-center px-4 py-2 rounded-full border border-gray-300 bg-gray-100 text-gray-700 text-sm font-medium opacity-70 cursor-not-allowed">Coming soon · Hugging Face</a>
         </div>
     </header>
 
     <!-- Main Teaser -->
     <section class="max-w-5xl mx-auto px-6 mb-16">
     <div class="shadow-xl">
-        <img src="./images/hydra_cover.jpg" alt="HYDRA teaser" class="w-full h-auto block">
+        <img src="./images/cover_image.png" alt="Navigation Curation dataset cover" class="w-full h-auto block">
     </div>
 </section>
 
@@ -67,7 +61,12 @@
     <section class="max-w-4xl mx-auto px-6 mb-16">
         <h3 class="text-2xl font-bold mb-4 border-b pb-2">Abstract</h3>
         <p class="text-lg text-gray-700 leading-relaxed mb-4">
-            World models let robots imagine possible futures, but exploiting this capability for real-time planning is bottlenecked by a representation misalignment: generative models and planners operate on decoupled manifolds, requiring computationally expensive decoding of every candidate back to the high-dimensional observation space for evaluation. In this paper, we present <strong style="color: #1A4B84;">HYDRA</strong>, a discrete World Action Model that tackles this by establishing a unified latent manifold over visual states, physical poses, and control actions. By compressing this manifold through modality-specific Vector-Quantized bottlenecks, <strong style="color: #1A4B84;">HYDRA</strong> yields discrete vocabularies of kinodynamic intents and visual states. This enables Discrete Latent Planning (DLP), where candidates are sampled directly from the shared manifold and ranked by a Kinematic-Perceptual Cost within the discrete latent space. To bridge discrete planning with the continuous commands required for physical actuation, <strong style="color: #1A4B84;">HYDRA</strong> pairs DLP with conditional Flow Matching to map selected intents to smooth execution trajectories.
+            Learning based approaches have become ubiquitous across the computer vision community with new methods and approaches appearing at breath taking speed.
+            While these approaches have made their way into the robotics community through various visual-navigation foundation models, the common impasse of data scarcity hinders more efficient cross-pollination between the robotics and learning disciplines.
+            Robotics data are notoriously difficult and expensive to collect, have a wide-array of robotic specific problems, including extrinsic calibrations, and are generally captured with ROS, the esoteric, robotic operating system.
+            While great strides have been taken to increase the quality and quantity of robotics data, the ROS platform and non-standardized cleaning methods make these data inacessible to the broader learning community.
+            This work attempts to ameliorate the issue of non-standardized and robotic specific data issues for visual navigation by providing synchronized RGB-odometry pairs, along with platform specific metadata, circumventing the need for ROS and providing a repository of cleaned data and blueprint to clean future robotics datasets.
+            To this end, we present Navigation Curation, a standardized and extensible data cleaning pipeline, visualization tools, and cleaned dataset repository with over 1.37 million paired image-odometry samples along with corresponding labels for visual navigation tasks with the goal to develop standardized methodologies to facilitate easier collaboration between the robotics and machine learning community, while providing an initial large-scale, high-quality dataset. 
         </p>
     </section>
 
@@ -85,421 +84,9 @@
 <!--        </p>-->
 <!--    </section>-->
 
-    <!-- Results Section -->
-    <section class="max-w-4xl mx-auto px-6 mb-16">
-        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Speed vs. Safety</h3>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            Below is the planning performance evaluated in clear, occluded, and narrow corridor turn environments.
-        </p>
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden text-left">
-                <thead class="bg-gray-100 text-gray-800">
-                    <tr>
-                        <th class="py-4 px-6 font-bold uppercase text-sm border-b">Model</th>
-                        <th class="py-4 px-6 font-bold uppercase text-sm border-b">Search Space</th>
-                        <th class="py-4 px-6 font-bold uppercase text-sm border-b text-center">Plan Time &downarrow;</th>
-                        <th class="py-4 px-6 font-bold uppercase text-sm border-b text-center">Clear (SR%) &uparrow;</th>
-                        <th class="py-4 px-6 font-bold uppercase text-sm border-b text-center">Occluded (SR%) &uparrow;</th>
-                        <th class="py-4 px-6 font-bold uppercase text-sm border-b text-center">Corner Turn (SR%) &uparrow;</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-700">
-                    <tr class="hover:bg-gray-50 border-b">
-                        <td class="py-4 px-6 font-semibold text-red-600">NWM</td>
-                        <td class="py-4 px-6">Continuous (CEM)</td>
-                        <td class="py-4 px-6 text-center text-red-600">> 500.0s</td>
-                        <td class="py-4 px-6 text-center">0</td>
-                        <td class="py-4 px-6 text-center">0</td>
-                        <td class="py-4 px-6 text-center">0</td>
-                    </tr>
-                    <tr class="hover:bg-gray-50 border-b">
-                        <td class="py-4 px-6 font-semibold text-orange-500">VertiFormer</td>
-                        <td class="py-4 px-6">Continuous (MPPI)</td>
-                        <td class="py-4 px-6 text-center font-bold text-green-600">0.7s</td>
-                        <td class="py-4 px-6 text-center">40</td>
-                        <td class="py-4 px-6 text-center">0</td>
-                        <td class="py-4 px-6 text-center">0</td>
-                    </tr>
-                    <tr class="hover:bg-gray-50 border-b">
-                        <td class="py-4 px-6 font-semibold text-orange-500">Hydra-NoVQ</td>
-                        <td class="py-4 px-6">Continuous (MPPI)</td>
-                        <td class="py-4 px-6 text-center text-black-600">1.2s</td>
-                        <td class="py-4 px-6 text-center">20</td>
-                        <td class="py-4 px-6 text-center">10</td>
-                        <td class="py-4 px-6 text-center">10</td>
-                    </tr>
-                    <tr class="hover:bg-gray-50 bg-[#E8EFF6]">
-                        <td class="py-4 px-6 font-bold text-[#1A4B84]">HYDRA (Ours)</td>
-                        <td class="py-4 px-6 font-bold text-[#1A4B84]">Discrete (DLP)</td>
-                        <td class="py-4 px-6 text-center font-semibold">0.9s</td>
-                        <td class="py-4 px-6 text-center font-bold text-green-600">100</td>
-                        <td class="py-4 px-6 text-center font-bold text-green-600">80</td>
-                        <td class="py-4 px-6 text-center font-bold text-green-600">80</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <p class="text-gray-600 mt-4 italic text-sm">
-            <span style="color: #1A4B84;">HYDRA</span> achieves the "Goldilocks" zone—real-time edge performance, overcoming NWM's catastrophic latency and VertiFormer's sample inefficiency.
-        </p>
-    </section>
-
-    <!-- Video Generation Quality -->
-    <section class="max-w-5xl mx-auto px-6 mb-16">
-        <h3 class="text-2xl font-bold mb-6 border-b pb-2">Video Generation Quality</h3>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            <span style="color: #1A4B84;">HYDRA</span>'s generative head produces high-fidelity predictions of future states. We demonstrate this in two ways: <strong>teacher-forced</strong> generation, which shows the model's rendering quality and adherence to the given ground-truth actions, and <strong>action head</strong> generation, which shows the model's ability to create coherent long-term rollouts on its own. Notice how action head rollouts that lead to collisions (out-of-distribution states) result in visual "hallucinations," an uncertainty signal we use for safe planning.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Teacher-Forced Column -->
-            <div>
-                <h4 class="text-xl font-bold mb-3 text-center">Teacher-Forced Generation</h4>
-                <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video mb-3">
-                    <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                        <source src="./videos/gen_teacher_forced.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-center text-gray-600 italic text-sm">Model renders frames conditioned on <strong>ground-truth</strong> actions from the dataset, showing high-fidelity reconstruction.</p>
-            </div>
-            <!-- Action Head Column -->
-            <div>
-                <h4 class="text-xl font-bold mb-3 text-center">Action Head Generation</h4>
-                <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video mb-3">
-                    <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                        <source src="./videos/gen_action_head.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-center text-gray-600 italic text-sm">Model predicts its <strong>own</strong> actions and generates future frames. The resulting "hallucination" upon collision is used as a cost for planning.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Gallery: Generated Videos -->
-    <section class="max-w-5xl mx-auto px-6 mb-16">
-        <h3 class="text-2xl font-bold mb-6 border-b pb-2">Video Gallery — Generated Videos</h3>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            A set of videos produced by the image generation head.
-        </p>
-        <!-- Video Grid: 2 columns on mobile, 3-4 on desktop -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900">
-                <video class="w-full h-56 object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/vid1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <!-- <div class="p-3 text-center text-sm text-gray-200 bg-gray-800">Teacher-Forced Generation</div> -->
-            </div>
-
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900">
-                <video class="w-full h-56 object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/vid2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <!-- <div class="p-3 text-center text-sm text-gray-200 bg-gray-800">Action-Head Generation</div> -->
-            </div>
-
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900">
-                <video class="w-full h-56 object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/vid3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <!-- <div class="p-3 text-center text-sm text-gray-200 bg-gray-800">Generated Sample 1</div> -->
-            </div>
-
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900">
-                <video class="w-full h-56 object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/vid4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <!-- <div class="p-3 text-center text-sm text-gray-200 bg-gray-800">Generated Sample 2</div> -->
-            </div>
-
-<!--            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900">-->
-<!--                <video class="w-full h-56 object-cover" autoplay loop muted playsinline>-->
-<!--                    <source src="./videos/vid3.mp4" type="video/mp4">-->
-<!--                    Your browser does not support the video tag.-->
-<!--                </video>-->
-<!--                <div class="p-3 text-center text-sm text-gray-200 bg-gray-800">Generated Sample 3</div>-->
-<!--            </div>-->
-
-<!--            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900">-->
-<!--                <video class="w-full h-56 object-cover" autoplay loop muted playsinline>-->
-<!--                    <source src="./videos/vid4.mp4" type="video/mp4">-->
-<!--                    Your browser does not support the video tag.-->
-<!--                </video>-->
-<!--                <div class="p-3 text-center text-sm text-gray-200 bg-gray-800">Generated Sample 4</div>-->
-<!--            </div>-->
-        </div>
-    </section>
-
-    <!-- Planning and Path Following -->
-    <section class="max-w-5xl mx-auto px-6 mb-16">
-        <h3 class="text-2xl font-bold mb-6 border-b pb-2">Planning & Path Following</h3>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            We visualize the planning process by showing the robot's view alongside an RViz visualization of the plans being evaluated. This highlights how <span style="color: #1A4B84;">HYDRA</span> selects a lowest cost path and executes it with a controller.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <!-- Planning Video -->
-            <div>
-                <h4 class="text-xl font-bold mb-3 text-center">Planning</h4>
-                <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                    <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                        <source src="./videos/MN5.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-center text-gray-500 mt-2 italic text-sm">Robot view with RViz showing evaluated trajectories.</p>
-            </div>
-            <!-- Path Following Video -->
-            <div>
-                <h4 class="text-xl font-bold mb-3 text-center">CFG Path Following</h4>
-                <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                    <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                        <source src="./videos/following_rviz_cfg_1.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-center text-gray-500 mt-2 italic text-sm">Execution of a planned trajectory (red) in a cluttered hallway. Yellow is uncond, purple is cond, and green is the planned path.</p>
-            </div>
-            <!-- Sampling Path Following Video -->
-            <div>
-                <h4 class="text-xl font-bold mb-3 text-center">Sampling Path Following</h4>
-                <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                    <video class="w-full h-full object-cover" autoplay loop muted playsinline data-speed="2.0">
-                        <source src="./videos/following_rviz_sampling_1.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-center text-gray-500 mt-2 italic text-sm">Sampling-based path following demonstration.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Physical Deployment Video Collage -->
-    <section class="max-w-5xl mx-auto px-6 mb-16">
-        <h3 class="text-2xl font-bold mb-6 border-b pb-2">Deployment Video</h3>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            Real-world deployments across complex environments. <span style="color: #1A4B84;">HYDRA</span> handles obstacles and narrow corridors.
-        </p>
-        <!-- 2x3 Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline> <!-- data-speed="2.0" -->
-                    <source src="./videos/out_1.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline> <!-- data-speed="2.0" -->
-                    <source src="./videos/out_2.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/out_3.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/out_4.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/out_5.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/out_6.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/MN1.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/MN2.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                    <source src="./videos/MN4.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </section>
-
-    <!-- Image Gallery -->
-    <section class="max-w-5xl mx-auto px-6 mb-16">
-        <h3 class="text-2xl font-bold mb-6 border-b pb-2">Image Generation</h3>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            Multiple image generation through time with one forward pass. Top row is the ground truth, bottom is the generated image.
-        </p>
-        <!-- Bento Box Grid: 4 columns on desktop, fixed auto row height -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-            <!-- Large Feature Image -->
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-200 col-span-2 row-span-2">
-                <img src="./images/img1.png" alt="Qualitative result 1" class="w-full h-full object-cover">
-            </div>
-            <!-- Supporting Images -->
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-200">
-                <img src="./images/img10.png" alt="Qualitative result 2" class="w-full h-full object-cover">
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-200">
-                <img src="./images/img3.png" alt="Qualitative result 3" class="w-full h-full object-cover">
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-200">
-                <img src="./images/img4.png" alt="Qualitative result 4" class="w-full h-full object-cover">
-            </div>
-            <div class="rounded-xl overflow-hidden shadow-lg bg-gray-200">
-                <img src="./images/img5.png" alt="Qualitative result 5" class="w-full h-full object-cover">
-            </div>
-        </div>
-    </section>
-
-    <!-- Failure Section -->
-    <section class="max-w-5xl mx-auto px-6 mb-16">
-        <h3 class="text-2xl font-bold mb-6 border-b pb-2">Limitations & Failure Modes</h3>
-        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            No model is perfect. To foster transparent research, we highlight scenarios where <span style="color: #1A4B84;">HYDRA</span>'s performance degrades. Please see the paper's limitations section and failure analysis section in the Appendix.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Failure Case 1 -->
-            <div>
-                <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                    <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                        <source src="./videos/failure_1.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-gray-700 mt-3">
-                    <strong class="text-red-600">Failure:</strong> Trapped in a tight space by not turning in time.
-                    <span class="text-gray-600">The planner did not converge to the goal in time before a sharp right turn.</span>
-                </p>
-            </div>
-            <!-- Failure Case 2 -->
-            <div>
-                <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
-                    <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-                        <source src="./videos/failure_2.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-gray-700 mt-3">
-                    <strong class="text-red-600">Failure:</strong> Vanishing Humans in Social Scenarios.
-                    <span class="text-gray-600">The limited cardinality of the visual codebook causes degradation in social scenarios where there are lots of visual changes caused by humans who only occupy a small number of pixels.</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-   
-    <!-- BibTeX Section -->
-    <section class="max-w-4xl mx-auto px-6 mb-16">
-        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Citation</h3>
-        <div class="bg-gray-100 p-6 rounded-lg overflow-x-auto text-sm font-mono text-gray-700 border border-gray-300 shadow-inner">
-<pre><code>@article{nazeri2026hydra,
-  title={Hydra: A Navigation World Action Model with Discrete Latent Planning and Continuous Flow-Matching Execution},
-  author={Nazeri, Mohammad and Card, Alexandyr and Huber, Samira and Pokhrel, Anuj and Wang, Yujun and Hammele, Ruben and Song, Daeun and Pirk, S{\"o}ren and Xiao, Xuesu},
-  journal={arXiv preprint arXiv:2608.28995},
-  year={2026}
-}</code></pre>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center text-gray-500 pb-8 text-sm">
-        <p>&copy; 2026 RobotiXX Lab, George Mason University. All Rights Reserved.</p>
-        <p>Template inspired by <a href="https://github.com/nerfies/nerfies.github.io" class="text-blue-500 hover:underline">Nerfies</a>.</p>
-    </footer>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black bg-opacity-90 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 backdrop-blur-sm">
-        <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl font-bold hover:text-gray-300 z-50 cursor-pointer">&times;</button>
-        <div class="relative w-full max-w-6xl max-h-full flex items-center justify-center">
-            <img id="lightbox-img" class="hidden max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" src="" alt="Zoomed Image">
-            <video id="lightbox-video" class="hidden max-w-full max-h-[90vh] rounded-lg shadow-2xl" controls autoplay loop playsinline>
-                <source src="" type="video/mp4">
-            </video>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxVideo = document.getElementById('lightbox-video');
-            const lightboxVideoSrc = lightboxVideo.querySelector('source');
-
-            const closeLightbox = () => {
-                lightbox.classList.add('opacity-0');
-                // Wait for the fade-out transition to complete before hiding the display
-                setTimeout(() => {
-                    lightbox.classList.add('hidden');
-                    lightboxImg.src = '';
-                    lightboxVideo.pause();
-                    lightboxVideoSrc.src = '';
-                }, 300);
-            };
-
-            // Select all images and videos dynamically inside our qualitative grids
-            document.querySelectorAll('.grid img, .grid video').forEach(media => {
-                // Add Tailwind utility classes to indicate clickability
-                media.classList.add('cursor-pointer', 'transition-transform', 'duration-300', 'hover:scale-[1.03]');
-
-                // If this is a video and has a data-speed attribute, set playbackRate after metadata loads
-                if (media.tagName.toLowerCase() === 'video') {
-                    const speedAttr = media.getAttribute('data-speed');
-                    if (speedAttr) {
-                        const s = parseFloat(speedAttr);
-                        if (!isNaN(s) && s > 0) {
-                            if (media.readyState >= 1) {
-                                try { media.playbackRate = s; } catch (e) { /* ignore */ }
-                            } else {
-                                media.addEventListener('loadedmetadata', () => {
-                                    try { media.playbackRate = s; } catch (e) { /* ignore */ }
-                                });
-                            }
-                        }
-                    }
-                }
-
-                media.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const isVideo = media.tagName.toLowerCase() === 'video';
-                    const src = isVideo ? (media.querySelector('source') ? media.querySelector('source').src : media.src) : media.src;
-
-                    if (isVideo) {
-                        lightboxVideoSrc.src = src;
-                        lightboxVideo.load();
-
-                        // copy playback rate from clicked video (prefer data-speed)
-                        const speedAttr = media.getAttribute('data-speed');
-                        let rate = 1;
-                        if (speedAttr) rate = parseFloat(speedAttr) || 1;
-                        else rate = media.playbackRate || 1;
-                        lightboxVideo.playbackRate = rate;
-
-                        lightboxVideo.classList.remove('hidden');
-                        lightboxImg.classList.add('hidden');
-                        lightboxVideo.play();
-                    } else {
-                        lightboxImg.src = src;
-                        lightboxImg.classList.remove('hidden');
-                        lightboxVideo.classList.add('hidden');
-                    }
-
-                    lightbox.classList.remove('hidden');
-                    // Small delay to allow display:block to apply before changing opacity for smooth fade-in
-                    setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
-                });
-            });
-
-            // Close listeners (clicking the background, close button, or pressing escape)
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox || e.target.id === 'lightbox-close') closeLightbox();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeLightbox();
-            });
-        });
-    </script>
+    <!--
+    Legacy results, gallery, and deployment content removed.
+    Speed vs. Safety and everything below this point are intentionally disabled.
+    -->
 </body>
 </html>
